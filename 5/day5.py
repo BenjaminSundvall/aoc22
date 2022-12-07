@@ -2,7 +2,7 @@
 # Read input file                                                     #
 #=====================================================================#
 
-file = open("input1.txt", "r")
+file = open("input5.txt", "r")
 input_lines = file.readlines()
 
 
