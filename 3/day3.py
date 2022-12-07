@@ -2,7 +2,7 @@
 # Read input file                                                     #
 #=====================================================================#
 
-file = open("input1.txt", "r")
+file = open("input3.txt", "r")
 input_lines = file.readlines()
 
 
@@ -11,7 +11,24 @@ input_lines = file.readlines()
 #=====================================================================#
 
 def part1():
-    return
+    score = 0
+
+    for line in input_lines:
+        length = len(line)
+        first_part = line[:int(length/2)]
+        second_part = line[int(length/2):]
+        
+        for c1 in first_part:
+            for c2 in second_part:
+                if c1 == c2:
+                    if c1.isupper():
+                        value = ord(c1) - ord("A") + 27
+                    elif c1.islower():
+                        value = ord(c1) - ord("a") + 1
+
+        score += value
+
+    return score
 
 
 #=====================================================================#
@@ -19,7 +36,27 @@ def part1():
 #=====================================================================#
 
 def part2():
-    return
+    file.seek(0)
+    
+    score = 0
+
+    while True:
+        lines = [0, 0, 0]
+        for i in range(3):
+            lines[i] = file.readline()
+            if not lines[i]:
+                return score
+    
+        for c1 in lines[0]:
+            for c2 in lines[1]:
+                for c3 in lines[2]:
+                    if c1 == c2 == c3:
+                        if c1.isupper():
+                            value = ord(c1) - ord("A") + 27
+                        elif c1.islower():
+                            value = ord(c1) - ord("a") + 1
+        score += value
+                        
 
 
 #=====================================================================#
